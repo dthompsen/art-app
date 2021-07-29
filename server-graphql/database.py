@@ -2,6 +2,7 @@ from sqlalchemy import create_engine, Column, ForeignKey, Integer, String
 from sqlalchemy.orm import scoped_session, sessionmaker, backref, relationship
 from sqlalchemy.ext.declarative import declarative_base
 
+# dialect+driver://username:password@host:port/database
 DB_URL = "sqlite:///artdb.sqlite3"
 # engine = create_engine(DB_URL, convert_unicode=True)
 engine = create_engine(DB_URL)
