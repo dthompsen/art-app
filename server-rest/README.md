@@ -9,3 +9,8 @@ Uses Flask-based uvicorn server to deploy FastAPI interface - includes Swagger i
 
 3. Then browse to (Swagger UI):
    localhost:8000/docs
+
+
+
+Run init tests (optional -s shows print output):
+python -m pytest [-s]

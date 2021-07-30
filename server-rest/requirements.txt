@@ -5,3 +5,6 @@ pymysql
 sqlalchemy
 starlette
 uvicorn
+
+pytests
+requests
