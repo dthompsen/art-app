@@ -2,7 +2,7 @@ import React from 'react';
 import Product from './Product';
 import { useQuery, gql } from '@apollo/client';
 
-const PRODUCT_QUERY = gql`
+export const PRODUCT_QUERY = gql`
   {
     allProducts {
       id,
@@ -12,11 +12,11 @@ const PRODUCT_QUERY = gql`
   }
 `;
 
-const ProductList = () => {
+export const ProductList = () => {
   const { data } = useQuery(PRODUCT_QUERY);
-  console.log(data);
   return (
     <div>
+      Products
       {data && (
         <>
           {data.allProducts.map((product) => (

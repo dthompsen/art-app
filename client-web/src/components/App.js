@@ -1,9 +1,13 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import ProductList from './ProductList';
 
-class App extends Component {
+export class App extends Component {
   render() {
-    return <ProductList />;
+    return (
+      <div>
+        <div>Art Manager</div>
+      </div>
+    );
   }
 }
 
