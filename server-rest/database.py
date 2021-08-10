@@ -15,6 +15,7 @@ class ProductTable(Base):
 
     id = Column(Integer, primary_key=True)
     title = Column(String)
+    img = Column(String)
     description = Column(String)
 
 class ExhibitTable(Base):

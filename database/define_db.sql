@@ -1,6 +1,7 @@
 CREATE TABLE products(
     id             INT PRIMARY KEY NOT NULL,
     title          TEXT NOT NULL,
+    img            TEXT NOT NULL,
     description    TEXT
 );
 CREATE TABLE exhibits(

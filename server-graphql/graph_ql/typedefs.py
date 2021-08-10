@@ -18,6 +18,7 @@ class Display(SQLAlchemyObjectType):
 class ProductFields:
     id = graphene.Int()
     title = graphene.String()
+    img = graphene.String()
     description = graphene.String()
 
 class AddProductFields(graphene.InputObjectType, ProductFields):

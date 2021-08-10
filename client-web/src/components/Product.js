@@ -1,5 +1,7 @@
 import React from 'react';
 
+// TBD - re-purpose this for product detail
+
 const Product = (props) => {
   const { product } = props;
   return (

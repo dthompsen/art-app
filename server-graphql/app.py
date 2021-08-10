@@ -8,8 +8,7 @@ app = Flask(__name__)
 # allow CORS for all domains on all routes
 CORS(app)
 app.debug = True
-useGraphiQL = False
-app.add_url_rule("/", view_func=View.as_view("graphql", graphiql=useGraphiQL, schema=schema))
+app.add_url_rule("/", view_func=View.as_view("graphql", graphiql=True, schema=schema))
 
 @app.teardown_appcontext
 def shutdown_session(Error=None):
