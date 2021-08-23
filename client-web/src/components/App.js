@@ -1,13 +1,22 @@
-import { Component } from 'react';
+import React, { Component } from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import MenuBar from './MenuBar';
+import HomePage from './HomePage';
+import ProductList from './ProductList';
 import ExhibitList from './ExhibitList';
-//import ProductList from './ProductList';
 
 export class App extends Component {
   render() {
     return (
       <div>
-        <div>Art Manager</div>
-        <ExhibitList />
+        <Router>
+          <Switch>
+            <Route exact path='/home' component={HomePage} />
+            <Route path='/products' component={ProductList} />
+            <Route path='/exhibits' component={ExhibitList} />
+          </Switch>
+          <MenuBar />
+        </Router>
       </div>
     );
   }
