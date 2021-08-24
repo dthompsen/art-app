@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link as RouterLink } from 'react-router-dom';
 import { useQuery, gql } from '@apollo/client';
 import { makeStyles } from '@material-ui/core/styles';
 import ImageList from '@material-ui/core/ImageList';
@@ -7,7 +8,7 @@ import ImageListItemBar from '@material-ui/core/ImageListItemBar';
 import IconButton from '@material-ui/core/IconButton';
 import InfoIcon from '@material-ui/icons/Info';
 
-const ART_LOC = "/art/";
+const ART_LOC = "/art/"; // TO-DO: make constants file
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -18,8 +19,10 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.background.paper,
   },
   imageList: {
-    width: 800,
-    height: 600,
+    width: 1000,
+    height: 1000,
+    gap: 5,
+    rowHeight: 310,
   },
   titleBar: {
     background:
@@ -47,10 +50,10 @@ export const ProductList = () => {
   const classes = useStyles();
 
   return (
-    <div>
+    <div className={classes.root}>
       Products
-      <div className={classes.root}>
-        <ImageList>
+      <div>
+        <ImageList className={classes.imageList} >
         {data && (
           <>
             {data.allProducts.map((product) => (
@@ -58,8 +61,12 @@ export const ProductList = () => {
                 <img src={ART_LOC + product.img} alt={product.title} />
                 <ImageListItemBar
                   title={product.title}
+                  classes={{
+                    root: classes.titleBar,
+                    title: classes.title,
+                  }}
                   actionIcon={
-                    <IconButton aria-label={`info about ${product.title}`} className={classes.icon}>
+                    <IconButton component={RouterLink} to={`/products/${product.id}`} aria-label={`info about ${product.title}`} className={classes.icon}>
                       <InfoIcon />
                     </IconButton>
                   }

@@ -10,6 +10,7 @@ const PasswordReset = lazy(() => import('../pages/PasswordReset/PasswordReset'))
 const About = lazy(() => import('../pages/About'))
 const Home = lazy(() => import('../pages/Home/Home'))
 const ProductList = lazy(() => import('../pages/Product/ProductList'))
+const Product = lazy(() => import('../pages/Product/Product'))
 const ExhibitList = lazy(() => import('../pages/Exhibit/ExhibitList'))
 const MyAccount = lazy(() => import('../pages/MyAccount/MyAccount'))
 
@@ -25,7 +26,8 @@ const routes = [
   <Route path="/about" exact component={About} />,
   <AuthorizedRoute path="/my_account" exact component={MyAccount} />,
   <AuthorizedRoute path="/home" exact component={Home} />,
-  <AuthorizedRoute path="/products" component={ProductList} />,
+  <AuthorizedRoute path="/products" exact component={ProductList} />,
+  <AuthorizedRoute path="/products/:id" exact component={Product} />,
   <AuthorizedRoute path="/exhibits" exact component={ExhibitList} />,
 ]
 
