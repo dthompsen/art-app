@@ -1,11 +1,9 @@
 import React from 'react'
 import {
   AccountBox as AccountBoxIcon,
-  ChatBubble,
   ChromeReaderMode,
   Dashboard as DashboardIcon,
   ExitToApp as ExitToAppIcon,
-  FilterList,
   FormatTextdirectionRToL as RTLIcon,
   FormatTextdirectionLToR as LTRIcon,
   GetApp,
