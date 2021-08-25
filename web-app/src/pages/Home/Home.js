@@ -8,10 +8,8 @@ const HomePage = () => {
 
   return (
     <Page pageTitle={intl.formatMessage({ id: 'home' })}>
-      <Scrollbar
-        style={{ height: '100%', width: '100%', display: 'flex', flex: 1 }}
-      >
-        {intl.formatMessage({ id: 'home' })}
+      <Scrollbar style={{ height: '100%', width: '100%', display: 'flex', flex: 1 }}>
+        TBD
       </Scrollbar>
     </Page>
   )

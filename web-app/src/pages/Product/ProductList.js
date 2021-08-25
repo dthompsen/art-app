@@ -2,11 +2,13 @@ import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import { useQuery, gql } from '@apollo/client';
 import { makeStyles } from '@material-ui/core/styles';
+import Page from 'material-ui-shell/lib/containers/Page'
 import ImageList from '@material-ui/core/ImageList';
 import ImageListItem from '@material-ui/core/ImageListItem';
 import ImageListItemBar from '@material-ui/core/ImageListItemBar';
 import IconButton from '@material-ui/core/IconButton';
 import InfoIcon from '@material-ui/icons/Info';
+import { useIntl } from 'react-intl'
 
 const ART_LOC = "/art/"; // TO-DO: make constants file
 
@@ -14,7 +16,6 @@ const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
     flexWrap: 'wrap',
-    justifyContent: 'space-around',
     overflow: 'hidden',
     backgroundColor: theme.palette.background.paper,
   },
@@ -48,11 +49,11 @@ export const PRODUCT_QUERY = gql`
 export const ProductList = () => {
   const { data } = useQuery(PRODUCT_QUERY);
   const classes = useStyles();
+  const intl = useIntl()
 
   return (
-    <div className={classes.root}>
-      Products
-      <div>
+    <Page pageTitle={intl.formatMessage({ id: 'products' })} >
+      <div className={classes.root}>
         <ImageList className={classes.imageList} >
         {data && (
           <>
@@ -66,7 +67,7 @@ export const ProductList = () => {
                     title: classes.title,
                   }}
                   actionIcon={
-                    <IconButton component={RouterLink} to={`/products/${product.id}`} aria-label={`info about ${product.title}`} className={classes.icon}>
+                    <IconButton component={RouterLink} to={`/products/${product.id}`} aria-label={`Product detail`} className={classes.icon}>
                       <InfoIcon />
                     </IconButton>
                   }
@@ -77,7 +78,7 @@ export const ProductList = () => {
         )}
         </ImageList>
       </div>
-    </div>
+    </Page>
   );
 };
 

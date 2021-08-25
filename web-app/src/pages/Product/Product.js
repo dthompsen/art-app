@@ -2,6 +2,7 @@ import React from 'react';
 import { useParams } from "react-router-dom";
 import { useQuery, gql } from '@apollo/client';
 import { makeStyles } from '@material-ui/core/styles';
+import Page from 'material-ui-shell/lib/containers/Page'
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
@@ -9,12 +10,13 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import { useIntl } from 'react-intl'
 
 const ART_LOC = "/art/"; // TO-DO: make constants file
 
 const useStyles = makeStyles({
   root: {
-    maxWidth: 600,
+    maxWidth: 300,
   },
 });
 
@@ -33,11 +35,10 @@ const Product = () => {
   const { id } = useParams();
   const { data } = useQuery(PRODUCT_QUERY, {variables: { id }});
   const classes = useStyles();
+  const intl = useIntl()
+
   return (
-    <div>
-      <Typography gutterBottom variant="h5" component="h2">
-        Product
-      </Typography>
+    <Page pageTitle={intl.formatMessage({ id: 'product' })} >
       {data && (
         <>
           {data.productById.map((product) => (
@@ -60,10 +61,10 @@ const Product = () => {
                 </CardContent>
               </CardActionArea>
               <CardActions>
-                <Button size="small" color="primary">
+                <Button size="small" color="primary" onClick={() => { alert('Edit is TBD') }}>
                   Edit
                 </Button>
-                <Button size="small" color="primary">
+                <Button size="small" color="primary" onClick={() => { alert('Delete is TBD') }}>
                   Delete
                 </Button>
               </CardActions>
@@ -72,7 +73,7 @@ const Product = () => {
             ))}
           </>
         )}
-    </div>
+    </Page>
   );
 };
 
