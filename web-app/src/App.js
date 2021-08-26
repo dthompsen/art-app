@@ -1,3 +1,5 @@
+// Copyright 2021 Dave Thompsen. Subject to the MIT license.
+// Adapted from create-react-app material-ui template.
 import React, { Component } from 'react'
 import App from 'base-shell/lib'
 import MUIConfig from 'material-ui-shell/lib'

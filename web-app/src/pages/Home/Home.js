@@ -1,3 +1,5 @@
+// Copyright 2021 Dave Thompsen. Subject to the MIT license.
+// Adapted from create-react-app material-ui template.
 import Page from 'material-ui-shell/lib/containers/Page'
 import React from 'react'
 import Scrollbar from 'material-ui-shell/lib/components/Scrollbar/Scrollbar'

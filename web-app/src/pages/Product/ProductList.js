@@ -1,16 +1,17 @@
+// Copyright 2021 Dave Thompsen. Subject to the MIT license.
+// Adapted from create-react-app material-ui template.
 import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import { useQuery, gql } from '@apollo/client';
 import { makeStyles } from '@material-ui/core/styles';
-import Page from 'material-ui-shell/lib/containers/Page'
+import Page from 'material-ui-shell/lib/containers/Page';
 import ImageList from '@material-ui/core/ImageList';
 import ImageListItem from '@material-ui/core/ImageListItem';
 import ImageListItemBar from '@material-ui/core/ImageListItemBar';
 import IconButton from '@material-ui/core/IconButton';
 import InfoIcon from '@material-ui/icons/Info';
-import { useIntl } from 'react-intl'
-
-const ART_LOC = "/art/"; // TO-DO: make constants file
+import { useIntl } from 'react-intl';
+import * as Constants from '../../constants';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -59,7 +60,7 @@ export const ProductList = () => {
           <>
             {data.allProducts.map((product) => (
               <ImageListItem key={product.id}>
-                <img src={ART_LOC + product.img} alt={product.title} />
+                <img src={Constants.ART_LOC + product.img} alt={product.title} />
                 <ImageListItemBar
                   title={product.title}
                   classes={{

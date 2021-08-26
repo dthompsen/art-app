@@ -1,3 +1,5 @@
+// Copyright 2021 Dave Thompsen. Subject to the MIT license.
+// Adapted from create-react-app material-ui template.
 import React from 'react';
 import { useQuery, gql } from '@apollo/client';
 import { makeStyles } from '@material-ui/core/styles';
