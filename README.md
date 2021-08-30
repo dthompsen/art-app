@@ -31,13 +31,13 @@ The web-app and GraphQL server require:
 
 A rudimentary demo can be executed using the following steps:
 
-1. Setup server-graphql - install libraries and start server:
-   python -m pip install -r requirements.txt
-   python app.py
+1. Setup server-graphql - install libraries and start server:  
+        python -m pip install -r requirements.txt  
+        python app.py
 
-2. Setup web-app - install libraries and start app:
-   yarn install
-   yarn start
+2. Setup web-app - install libraries and start app:  
+        yarn install  
+        yarn start
 
 # Project Folder Tour
 
@@ -45,8 +45,8 @@ Brief descriptions of each of the top-level project folders.
 
 ## web-app
 The web front-end is generated from the
-[create-react-app](https://reactjs.org/docs/create-a-new-react-app.html#create-react-app)  
-[React Most Wanted template](https://github.com/TarikHuber/react-most-wanted)
+[create-react-app](https://reactjs.org/docs/create-a-new-react-app.html#create-react-app)
+template [React Most Wanted](https://github.com/TarikHuber/react-most-wanted)
 which provides a base-shell application structure and the Material UI React
 component library based on Google Material Design concepts. This template
 provides a standard UI layout with navigation menu and header, user account
@@ -66,7 +66,7 @@ the data access end points and the
 for providing GraphQL support to the Flask server.
 [SQLalchemy](https://www.sqlalchemy.org/) is used as the Object Relational Mapper on top of the SQLite3 database.
 [Graphene](https://github.com/graphql-python/graphene) is used to build the GraphQL schema
-used to model the data to be served. 
+used to model the data to be served.
 
 The app.py module starts the Flask-based GraphQL server. The database.py
 modules provides definitions to access the SQLite3 database. The server provides
