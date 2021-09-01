@@ -11,12 +11,8 @@ import {
   Language as LanguageIcon,
   Lock as LockIcon,
   MenuOpen as MenuOpenIcon,
-  QuestionAnswer,
   SettingsApplications as SettingsIcon,
   Style as StyleIcon,
-  Tab,
-  ViewList,
-  Web,
 } from '@material-ui/icons'
 
 import allLocales from './locales'
