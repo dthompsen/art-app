@@ -69,7 +69,7 @@ mutation {
   }
 }
 
-// Get exhibits by id
+// Get exhibit by id
 {
   exhibitById(id: 1) {
     id,
@@ -89,6 +89,28 @@ mutation {
     startDate,
     endDate
   },
+}
+
+// Get products displayed in an exhibit
+{
+  displaysByExhibitId(id:1) {
+    exhibitId,
+    productId,
+    price,
+    dateSold,
+    exhibit {
+      id,
+      venue,
+      theme,
+      startDate,
+      endDate
+    },
+    product {
+      id,
+      title,
+      img
+  	}
+  }
 }
 
 // Add an exhibit

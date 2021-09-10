@@ -20,6 +20,8 @@ INSERT INTO exhibits (id, venue, theme, start_date, end_date) VALUES (4, "NHAA",
 INSERT INTO exhibits (id, venue, theme, start_date, end_date) VALUES (5, "NHAA", "Circle of Life", "9/1/2021","9/30/2021");
 INSERT INTO exhibits (id, venue, theme, start_date, end_date) VALUES (6, "NHAA", "Harvest Moon", "9/1/2021","9/30/2021");
 
-INSERT INTO displays (id, product_id, exhibit_id, price, date_sold) VALUES (1, 2, 1, 150, "");
-INSERT INTO displays (id, product_id, exhibit_id, price, date_sold) VALUES (2, 1, 2, 200, "");
-INSERT INTO displays (id, product_id, exhibit_id, price, date_sold) VALUES (3, 3, 3, 300, "8/15/2021");
+INSERT INTO displays (id, product_id, exhibit_id, price, date_sold) VALUES (1, 1, 1, 150, "6/15/2021");
+INSERT INTO displays (id, product_id, exhibit_id, price, date_sold) VALUES (2, 2, 1, 175, "");
+INSERT INTO displays (id, product_id, exhibit_id, price, date_sold) VALUES (3, 3, 1, 150, "");
+INSERT INTO displays (id, product_id, exhibit_id, price, date_sold) VALUES (4, 1, 2, 200, "");
+INSERT INTO displays (id, product_id, exhibit_id, price, date_sold) VALUES (5, 3, 3, 300, "8/15/2021");

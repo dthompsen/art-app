@@ -48,3 +48,12 @@ class Query(graphene.ObjectType):
         venue = args.get("venue")
         query = Exhibit.get_query(info)
         return query.filter(ExhibitTable.venue == venue).all()
+
+
+    displays_by_exhibit_id = graphene.List(Display, id=graphene.Int())
+
+    @staticmethod
+    def resolve_displays_by_exhibit_id(parent, info, **args):
+        id = args.get("id")
+        query = Display.get_query(info)
+        return query.filter(DisplayTable.exhibit_id == id).all()
