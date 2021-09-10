@@ -4,6 +4,7 @@ import React from 'react';
 import { useParams } from "react-router-dom";
 import { useQuery, gql } from '@apollo/client';
 import { makeStyles } from '@material-ui/core/styles';
+import { Link as RouterLink } from 'react-router-dom';
 import Page from 'material-ui-shell/lib/containers/Page';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
@@ -12,6 +13,8 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import IconButton from '@material-ui/core/IconButton';
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import { useIntl } from 'react-intl';
 import * as Constants from '../../constants';
 
@@ -40,6 +43,9 @@ const Product = () => {
 
   return (
     <Page pageTitle={intl.formatMessage({ id: 'product' })} >
+      <IconButton component={RouterLink} to={`/products`} aria-label={`Products`} className={classes.icon}>
+        <ArrowBackIcon />
+      </IconButton>
       {data && (
         <>
           {data.productById.map((product) => (

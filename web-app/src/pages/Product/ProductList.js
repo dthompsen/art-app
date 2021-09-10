@@ -28,6 +28,8 @@ const useStyles = makeStyles((theme) => ({
   imageList: {
     gap: 5,
     rowHeight: 310,
+    width: 1000,
+    height:1000,
   },
   titleBar: {
     background:
