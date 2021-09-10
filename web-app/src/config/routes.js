@@ -12,6 +12,7 @@ const Home = lazy(() => import('../pages/Home/Home'))
 const ProductList = lazy(() => import('../pages/Product/ProductList'))
 const Product = lazy(() => import('../pages/Product/Product'))
 const ExhibitList = lazy(() => import('../pages/Exhibit/ExhibitList'))
+const Exhibit = lazy(() => import('../pages/Exhibit/Exhibit'))
 const MyAccount = lazy(() => import('../pages/MyAccount/MyAccount'))
 
 const routes = [
@@ -29,6 +30,7 @@ const routes = [
   <AuthorizedRoute path="/products" exact component={ProductList} />,
   <AuthorizedRoute path="/products/:id" exact component={Product} />,
   <AuthorizedRoute path="/exhibits" exact component={ExhibitList} />,
+  <AuthorizedRoute path="/exhibits/:id" exact component={Exhibit} />,
 ]
 
 export default routes
