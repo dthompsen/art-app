@@ -56,7 +56,7 @@ const Exhibit = () => {
   const { data: exhibitData }  = useQuery(EXHIBIT_QUERY, {variables: { id }});
   const { data : displayData } = useQuery(DISPLAY_QUERY, {variables: { id }});
   const classes = useStyles();
-  const intl = useIntl()
+  const intl = useIntl();
 
   return (
     <Page pageTitle={intl.formatMessage({ id: 'exhibit' })} >
@@ -105,7 +105,9 @@ const Exhibit = () => {
                 Price: $ {display.price}
               </Typography>
               <Typography variant="body2" color="textSecondary" component="p">
-                {display.dateSold ? `Sold ${display.dateSold}` : 'Unsold' }
+                {display.dateSold ?
+                  (intl.formatMessage({ id: 'sold' }) + " " + display.dateSold) : 
+                  intl.formatMessage({ id: 'unsold' }) }
               </Typography>
               </CardContent>
             </CardActionArea>
