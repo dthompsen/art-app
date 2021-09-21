@@ -33,6 +33,26 @@ Sample GraphQL queries:
   },
 }
 
+// Get product by id and the exhibits it has been displayed in
+{
+  productById(id: 1) {
+    id,
+    title,
+    description,
+    img,
+    displays {
+      exhibit {
+        venue,
+        theme,
+        startDate,
+        endDate
+      },
+      price,
+      dateSold
+    }
+  }
+}
+
 // Get products containing title
 {
   productsContainingTitle(title: "Lone Dinghy") {
@@ -80,6 +100,27 @@ mutation {
   },
 }
 
+// Get exhibit by id and all products displayed in it
+{
+  exhibitById(id: 1) {
+    id,
+    venue,
+  	theme,
+    startDate,
+    endDate,
+    displays {
+      product {
+        id,
+        title,
+        description,
+        img
+      },
+      price,
+      dateSold
+    }
+  }
+}
+
 // Get exhibits by venue
 {
   exhibitsByVenue(venue: "NHAA") {
@@ -89,28 +130,6 @@ mutation {
     startDate,
     endDate
   },
-}
-
-// Get products displayed in an exhibit
-{
-  displaysByExhibitId(id:1) {
-    exhibitId,
-    productId,
-    price,
-    dateSold,
-    exhibit {
-      id,
-      venue,
-      theme,
-      startDate,
-      endDate
-    },
-    product {
-      id,
-      title,
-      img
-  	}
-  }
 }
 
 // Add an exhibit
