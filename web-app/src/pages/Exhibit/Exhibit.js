@@ -28,33 +28,85 @@ const EXHIBIT_QUERY = gql`
   query exhibitById($id: Int) {
     exhibitById(id: $id) {
       venue,
-      theme,
+    	theme,
       startDate,
-      endDate
+      endDate,
+      displays {
+        product {
+          id,
+          title,
+          description,
+          img
+        },
+        price,
+        dateSold
+      }
     }
   }
 `;
 
-const DISPLAY_QUERY = gql`
-  query displaysByExhibitId($id: Int) {
-    displaysByExhibitId(id: $id) {
-      exhibitId,
-      productId,
-      price,
-      dateSold,
-      product {
-        id,
-        title,
-        img
-    	}
-    }
-  }
-`;
+function ExhibitElements(props) {
+  return (
+    <div>
+      <Typography variant="h5" component="h2">
+        Venue: {props.exhibit.venue}
+      </Typography>
+      <Typography variant="body2" color="textSecondary" component="p">
+        Theme: {props.exhibit.theme}
+      </Typography>
+      <Typography variant="body2" color="textSecondary" component="p">
+        Period: {props.exhibit.startDate} - {props.exhibit.endDate}
+      </Typography>
+      <Typography variant="h5" component="h4">
+        Products Displayed:
+      </Typography>
+    </div>
+  );
+}
+
+function DisplayElements(props) {
+  const classes = useStyles();
+  const intl = useIntl();
+  return (
+    <div style={{ display: "inline-block" }}>
+      <Card className={classes.root}>
+        <CardActionArea>
+          <CardMedia
+          component="img"
+          alt={props.display.product.title}
+          image={Constants.ART_LOC + props.display.product.img}
+          title={props.display.product.title}
+          />
+          <CardContent>
+          <Typography gutterBottom variant="h5" component="h2">
+            {props.display.product.title}
+          </Typography>
+          <Typography variant="body2" color="textSecondary" component="p">
+            Price: $ {props.display.price}
+          </Typography>
+          <Typography variant="body2" color="textSecondary" component="p">
+            {props.display.dateSold ?
+              (intl.formatMessage({ id: 'sold' }) + " " + props.display.dateSold) :
+              intl.formatMessage({ id: 'unsold' }) }
+          </Typography>
+          </CardContent>
+        </CardActionArea>
+        <CardActions>
+          <Button size="small" color="primary" onClick={() => { alert('Edit is TBD') }}>
+          Edit
+          </Button>
+          <Button size="small" color="primary" onClick={() => { alert('Remove is TBD') }}>
+          Remove
+          </Button>
+        </CardActions>
+      </Card>
+    </div>
+  )
+}
 
 const Exhibit = () => {
   const { id } = useParams();
-  const { data: exhibitData }  = useQuery(EXHIBIT_QUERY, {variables: { id }});
-  const { data : displayData } = useQuery(DISPLAY_QUERY, {variables: { id }});
+  const { data }  = useQuery(EXHIBIT_QUERY, {variables: { id }});
   const classes = useStyles();
   const intl = useIntl();
 
@@ -64,66 +116,16 @@ const Exhibit = () => {
         <ArrowBackIcon />
         Back to Exhibit List
       </IconButton>
-      {exhibitData && (
-        <>
-          {exhibitData.exhibitById.map((exhibit) => (
-            <div>
-              <Typography variant="h5" component="h2">
-                Venue: {exhibit.venue}
-              </Typography>
-              <Typography variant="body2" color="textSecondary" component="p">
-                Theme: {exhibit.theme}
-              </Typography>
-              <Typography variant="body2" color="textSecondary" component="p">
-                Period: {exhibit.startDate} - {exhibit.endDate}
-              </Typography>
-              <Typography variant="h5" component="h4">
-                Products Displayed:
-              </Typography>
-            </div>
-          ))}
-        </>
-      )}
-      {displayData && (
-      <>
-        {displayData.displaysByExhibitId.map((display) => (
-
-          <div style={{ display: "inline-block" }}>
-            <Card className={classes.root}>
-            <CardActionArea>
-              <CardMedia
-              component="img"
-              alt={display.product.title}
-              image={Constants.ART_LOC + display.product.img}
-              title={display.product.title}
-              />
-              <CardContent>
-              <Typography gutterBottom variant="h5" component="h2">
-                {display.product.title}
-              </Typography>
-              <Typography variant="body2" color="textSecondary" component="p">
-                Price: $ {display.price}
-              </Typography>
-              <Typography variant="body2" color="textSecondary" component="p">
-                {display.dateSold ?
-                  (intl.formatMessage({ id: 'sold' }) + " " + display.dateSold) : 
-                  intl.formatMessage({ id: 'unsold' }) }
-              </Typography>
-              </CardContent>
-            </CardActionArea>
-            <CardActions>
-              <Button size="small" color="primary" onClick={() => { alert('Edit is TBD') }}>
-              Edit
-              </Button>
-              <Button size="small" color="primary" onClick={() => { alert('Remove is TBD') }}>
-              Remove
-              </Button>
-            </CardActions>
-          </Card>
-        </div>
-        ))}
-      </>
-      )}
+      {data && data.exhibitById.map(exhibit => {
+        return (
+          <>
+            <ExhibitElements exhibit={exhibit} />
+            {exhibit && exhibit.displays.map(display => {
+              return(<DisplayElements display={display} />)
+            })}
+          </>
+        )
+      })}
     </Page>
   );
 };
