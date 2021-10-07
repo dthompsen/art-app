@@ -72,23 +72,23 @@ function DisplayElements(props) {
       <Card className={classes.root}>
         <CardActionArea>
           <CardMedia
-          component="img"
-          alt={props.display.product.title}
-          image={Constants.ART_LOC + props.display.product.img}
-          title={props.display.product.title}
+            component="img"
+            alt={props.display.product.title}
+            image={Constants.ART_LOC + props.display.product.img}
+            title={props.display.product.title}
           />
           <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
-            {props.display.product.title}
-          </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-            Price: $ {props.display.price}
-          </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-            {props.display.dateSold ?
-              (intl.formatMessage({ id: 'sold' }) + " " + props.display.dateSold) :
-              intl.formatMessage({ id: 'unsold' }) }
-          </Typography>
+            <Typography gutterBottom variant="h5" component="h2">
+              {props.display.product.title}
+            </Typography>
+            <Typography variant="body2" color="textSecondary" component="p">
+              Price: $ {props.display.price}
+            </Typography>
+            <Typography variant="body2" color="textSecondary" component="p">
+              {props.display.dateSold ?
+                (intl.formatMessage({ id: 'sold' }) + " " + props.display.dateSold) :
+                intl.formatMessage({ id: 'unsold' }) }
+            </Typography>
           </CardContent>
         </CardActionArea>
         <CardActions>
